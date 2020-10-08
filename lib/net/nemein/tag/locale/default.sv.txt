@@ -1,0 +1,23 @@
+---# MidCOM String Database
+---VERSION 2.1.0
+---LANGUAGE sv
+
+---STRING net.nemein.tag
+Innehålls märkning
+---STRINGEND
+
+---STRING tag "%s" is not valid. tags may not be empty
+Märkning "%s" är inte giltig. Märkningar för inte vara tomma.
+---STRINGEND
+
+---STRING tag "%s" is not valid. tags may not be numeric
+Märkning "%s" är inte giltig. Märkningar för inte vara numeriska.
+---STRINGEND
+
+---STRING tag "%s" is not valid. tags may not contain quotes
+Märkning "%s" är inte giltig. Märkningar för inte innehålla citatationstecken.
+---STRINGEND
+
+---STRING tagged
+Märkt
+---STRINGEND
