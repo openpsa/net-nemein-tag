@@ -253,12 +253,7 @@ class net_nemein_tag_handler extends midcom_baseclasses_components_purecode
             $mc->add_constraint('metadata.creator', '=', $user->guid);
         }
 
-        $links = $mc->get_values('tag');
-        if (empty($links)) {
-            return $tags;
-        }
-
-        foreach ($links as $tag_id) {
+        foreach ($mc->get_values('tag') as $tag_id) {
             if (!isset($tags_by_id[$tag_id])) {
                 $tag_mc = net_nemein_tag_tag_dba::new_collector('id', $tag_id);
                 $tag_mc->add_constraint('metadata.navnoentry', '=', 0);
@@ -323,10 +318,9 @@ class net_nemein_tag_handler extends midcom_baseclasses_components_purecode
     /**
      * Reads machine tag string from content and returns it, the string is removed from content on the fly
      *
-     * @param string $content reference to content
      * @return string string of tags, empty for no tags
      */
-    public static function separate_machine_tags_in_content(&$content) : string
+    public static function separate_machine_tags_in_content(string &$content) : string
     {
         $regex = '/^(.*)(tags:)\s+?(.*?)(\.?\s*)?$/si';
         if (!preg_match($regex, $content, $tag_matches)) {
