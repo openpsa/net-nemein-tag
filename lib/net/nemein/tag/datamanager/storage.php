@@ -12,6 +12,12 @@ class net_nemein_tag_datamanager_storage extends delayed
 {
     private string $auto_context = '';
 
+    public function __construct(midcom_core_dbaobject $object, array $config)
+    {
+        parent::__construct($object, $config);
+        $this->auto_context = trim($this->config['type_config']['auto_context'] ?? '');
+    }
+
     public function load()
     {
         if ($this->object->id) {
@@ -26,7 +32,6 @@ class net_nemein_tag_datamanager_storage extends delayed
     public function save()
     {
         $tag_array = net_nemein_tag_handler::string2tag_array((string) $this->value);
-        $this->auto_context = trim($this->auto_context);
         if (!empty($this->auto_context)) {
             $new_tag_array = [];
             foreach ($tag_array as $tagname => $url) {
